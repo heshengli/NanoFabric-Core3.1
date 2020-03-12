@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <h1>LoggedInAs: @User.Identity.Name</h1>
+}
+else
+{
+    <h1>notLoggedIn</h1>
+}

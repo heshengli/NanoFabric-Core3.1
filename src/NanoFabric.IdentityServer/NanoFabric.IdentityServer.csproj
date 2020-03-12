@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>NanoFabric.IdentityServer</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="IdentityServer4" Version="3.1.2" />
+    <PackageReference Include="IdentityServer4.Contrib.RedisStore" Version="3.1.1" />
+    <PackageReference Include="NodaTime" Version="2.4.7" />
+    <PackageReference Include="Skoruba.IdentityServer4.Admin.BusinessLogic" Version="1.0.0-beta3" />
+    <PackageReference Include="Skoruba.IdentityServer4.Admin.EntityFramework.Identity" Version="1.0.0-beta3" />
+    <PackageReference Include="StackExchange.Redis" Version="2.0.601" />
+  </ItemGroup>
+</Project>

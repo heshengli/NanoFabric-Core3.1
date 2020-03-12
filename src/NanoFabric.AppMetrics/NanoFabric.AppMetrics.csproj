@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>NanoFabric.AppMetrics</RootNamespace>
+    <AssemblyName>NanoFabric.AppMetrics</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="App.Metrics" Version="3.2.0" />
+    <PackageReference Include="App.Metrics.AspNetCore" Version="3.2.0" />
+    <PackageReference Include="App.Metrics.Reporting.InfluxDB" Version="3.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.2" />
+  </ItemGroup>
+</Project>
