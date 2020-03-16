@@ -44,14 +44,21 @@ namespace SampleService.IdentityServer
 
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddMvc()
-               .AddJsonOptions(options =>
-               {
-                   //options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-                   //options.SerializerSettings.DefaultValueHandling = DefaultValueHandling.Include;
-                   //options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-                   //options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                .AddNewtonsoftJson(options =>
+                {
+                    options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                    options.SerializerSettings.DefaultValueHandling = DefaultValueHandling.Include;
+                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                    options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                });
+            //.AddJsonOptions(options =>
+            //{
+            //    //options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            //    //options.SerializerSettings.DefaultValueHandling = DefaultValueHandling.Include;
+            //    //options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            //    //options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
 
-               })  ;
+            //})  ;
             services.AddNanoFabricConsul(Configuration);
 
             services.AddIdentityServer()

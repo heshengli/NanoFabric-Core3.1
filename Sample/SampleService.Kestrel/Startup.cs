@@ -62,7 +62,7 @@ namespace SampleService.Kestrel
             //    option.ApplicationCode = "SampleService_Kestrel";
             //});
 
-            services.AddMvc()
+            services.AddMvc().AddNewtonsoftJson()
                .AddMvcApiResult();
             services.Configure<ForwardedHeadersOptions>(options =>
             {

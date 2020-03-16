@@ -35,7 +35,7 @@ namespace SampleService.MvcClient
             
 
             // Add framework services.
-            services.AddMvc();
+            services.AddMvc().AddNewtonsoftJson();
             services.AddNanoFabricConsul(Configuration);
             services.AddNanoFabricConsulRouter();
             //var collectorUrl = Configuration.GetValue<string>("Skywalking:CollectorUrl");
