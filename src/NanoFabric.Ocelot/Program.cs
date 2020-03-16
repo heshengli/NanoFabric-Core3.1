@@ -1,13 +1,8 @@
-﻿using App.Metrics;
-using CacheManager.Core;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using NanoFabric.AspNetCore;
 using NLog.Web;
-using Ocelot.DependencyInjection;
-using System;
 using System.IO;
 
 namespace NanoFabric.Ocelot
@@ -53,9 +48,11 @@ namespace NanoFabric.Ocelot
                      logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
                      logging.AddConsole();
                      logging.AddDebug();
+                     //add NLog to ASP.NET Core    
+                     logging.AddNLog($"{hostingContext.HostingEnvironment.ContentRootPath}{ Path.DirectorySeparatorChar}nlog.config");
                  })
-                //.UseIISIntegration()
-                .UseIIS()
+                .UseIISIntegration()
+                //.UseIIS()
                 .UseMetricsWebTracking()
                 .UseMetricsEndpoints()
                 .UseNLog()

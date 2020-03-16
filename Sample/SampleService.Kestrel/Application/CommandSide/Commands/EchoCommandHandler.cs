@@ -13,6 +13,12 @@ namespace SampleService.Kestrel.Application.CommandSide.Commands
     public class EchoCommandHandler
         : IRequestHandler<EchoCommand, string>
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public Task<string> Handle(
             EchoCommand request,
             CancellationToken cancellationToken

@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using System.IO;
+using NLog.Web;
 
 namespace SampleService.Kestrel
 {
@@ -49,11 +51,20 @@ namespace SampleService.Kestrel
                         .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
                         .AddEnvironmentVariables();
                 })
+                .ConfigureLogging((hostingContext, logging) =>
+                {
+                    logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
+                    logging.AddConsole();
+                    logging.AddDebug();
+                    //add NLog to ASP.NET Core
+                    logging.AddNLog($"{hostingContext.HostingEnvironment.ContentRootPath}{ Path.DirectorySeparatorChar}NLog.config");
+                })
                 .UseConfiguration(hostingconfig)
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
+                //.UseIIS()
                 .UseUrls(url)
-                .UseIIS()
                 .UseStartup<Startup>()
                 .Build();
         }

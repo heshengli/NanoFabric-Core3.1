@@ -9,20 +9,92 @@
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
       },
+      "ReRouteIsCaseSensitive": false,
       "UseServiceDiscovery": true,
-      "FileCacheOptions": { "TtlSeconds": 15 }
+      "FileCacheOptions": { "TtlSeconds": 15 },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "apikey",
+        "AllowedScopes": [
+
+        ]
+      },
+      //"AddHeadersToRequest": {
+      //  "CustomerId": "Claims[CustomerId] > value",
+      //  "LocationId": "Claims[LocationId] > value",
+      //  "UserType": "Claims[sub] > value[0] > |",
+      //  "UserId": "Claims[sub] > value[1] > |"
+      //},
+      //"AddClaimsToRequest": {
+      //  "CustomerId": "Claims[CustomerId] > value",
+      //  "LocationId": "Claims[LocationId] > value",
+      //  "UserType": "Claims[sub] > value[0] > |",
+      //  "UserId": "Claims[sub] > value[1] > |"
+      //},
+      //"AddQueriesToRequest": {
+      //  "CustomerId": "Claims[CustomerId] > value",
+      //  "LocationId": "Claims[LocationId] > value",
+      //  "UserType": "Claims[sub] > value[0] > |",
+      //  "UserId": "Claims[sub] > value[1] > |"
+      //},
+      //"RouteClaimsRequirement": {
+      //  "UserType": "registered"
+      //},
+      "RequestIdKey": "OcRequestId",
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
     },
     {
       "DownstreamPathTemplate": "/api/user",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/api/user",
-      "UpstreamHttpMethod": [ "Get","Post"],
+      "UpstreamHttpMethod": [ "Get", "Post" ],
       "ServiceName": "SampleService_Kestrel",
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
       },
+      "ReRouteIsCaseSensitive": false,
       "UseServiceDiscovery": true,
-      "FileCacheOptions": { "TtlSeconds": 15 }
+      "FileCacheOptions": { "TtlSeconds": 15 },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "apikey",
+        "AllowedScopes": [
+
+        ]
+      },
+      //"AddHeadersToRequest": {
+      //  "CustomerId": "Claims[CustomerId] > value",
+      //  "LocationId": "Claims[LocationId] > value",
+      //  "UserType": "Claims[sub] > value[0] > |",
+      //  "UserId": "Claims[sub] > value[1] > |"
+      //},
+      //"AddClaimsToRequest": {
+      //  "CustomerId": "Claims[CustomerId] > value",
+      //  "LocationId": "Claims[LocationId] > value",
+      //  "UserType": "Claims[sub] > value[0] > |",
+      //  "UserId": "Claims[sub] > value[1] > |"
+      //},
+      //"AddQueriesToRequest": {
+      //  "CustomerId": "Claims[CustomerId] > value",
+      //  "LocationId": "Claims[LocationId] > value",
+      //  "UserType": "Claims[sub] > value[0] > |",
+      //  "UserId": "Claims[sub] > value[1] > |"
+      //},
+      //"RouteClaimsRequirement": {
+      //  "UserType": "registered"
+      //},
+      "RequestIdKey": "OcRequestId",
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
     },
     {
       "DownstreamPathTemplate": "/api/{url}",
@@ -31,6 +103,7 @@
       "LoadBalancerOptions": {
         "Type": "LeastConnection"
       },
+      "ReRouteIsCaseSensitive": false,
       "UseServiceDiscovery": true,
       "UpstreamPathTemplate": "/api/{url}",
       "UpstreamHttpMethod": [ "Get" ],

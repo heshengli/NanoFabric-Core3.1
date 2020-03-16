@@ -10,17 +10,15 @@ using NanoFabric.AppMetrics;
 using NanoFabric.AspNetCore;
 using NanoFabric.Exceptionless;
 using NanoFabric.Exceptionless.Model;
-using NLog.Extensions.Logging;
-using NLog.Web;
 using Ocelot.Administration;
 using Ocelot.Cache.CacheManager;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Ocelot.Provider.Consul;
 using Ocelot.Provider.Polly;
+using SkyWalking.AspNetCore;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace NanoFabric.Ocelot
@@ -64,7 +62,10 @@ namespace NanoFabric.Ocelot
             };
 
             services.AddAuthentication()
-            .AddIdentityServerAuthentication(authenticationProviderKey, options2);
+                .AddJwtBearer(authenticationProviderKey, x =>
+                {
+                });
+            //.AddIdentityServerAuthentication(authenticationProviderKey, options2);
 
             services.AddOcelot()
                 .AddCacheManager(x =>
@@ -99,14 +100,11 @@ namespace NanoFabric.Ocelot
 
         // http://edi.wang/post/2017/11/1/use-nlog-aspnet-20
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseExceptionless(Configuration);
-            //env.ConfigureNLog($"{env.ContentRootPath}{ Path.DirectorySeparatorChar}nlog.config");
 
-            ////add NLog to ASP.NET Core          
-            //loggingBuilder.AddNLog();
-            //loggerFactory.AddExceptionless();
+            loggerFactory.AddExceptionless();
 
             app.UseConsulRegisterService(Configuration);
 

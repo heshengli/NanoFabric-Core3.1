@@ -79,9 +79,7 @@ namespace SampleService.Kestrel
         /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env,IApiInfo apiInfo)
         {
-            //loggingBuilder.AddNLog();
-
-            NLog.LogManager.LoadConfiguration("NLog.config");
+            //NLog.LogManager.LoadConfiguration("NLog.config");
 
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
