@@ -62,10 +62,10 @@ namespace NanoFabric.Ocelot
             };
 
             services.AddAuthentication()
-                .AddJwtBearer(authenticationProviderKey, x =>
-                {
-                });
-            //.AddIdentityServerAuthentication(authenticationProviderKey, options2);
+                //.AddJwtBearer(authenticationProviderKey, x =>
+                //{
+                //});
+            .AddIdentityServerAuthentication(authenticationProviderKey, options2);
 
             services.AddOcelot()
                 .AddCacheManager(x =>
@@ -75,7 +75,8 @@ namespace NanoFabric.Ocelot
                  .AddConsul()
                  .AddConfigStoredInConsul()
                  .AddPolly()
-                 .AddAdministration("/administration", options);
+                 //.AddAdministration("/administration", "secret");
+            .AddAdministration("/administration", options);
 
             services.AddNanoFabricConsul(Configuration);
             services.AddNanoFabricExceptionless();
