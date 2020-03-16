@@ -1,5 +1,5 @@
-[<img src="https://nanofabric.visualstudio.com/_apis/public/build/definitions/513c9929-3dab-4c44-8a43-588bdb7d2441/1/badge">](https://nanofabric.visualstudio.com/_apis/public/build/definitions/513c9929-3dab-4c44-8a43-588bdb7d2441/1/badge)
-
+## 基于原项目升级.Net Core 3.1
+原项目地址 https://github.com/geffzhang/NanoFabric
 
 基于Consul + .NET Core + Polly + Ocelot + Exceptionless + IdentityServer等开源项目的微服务开发框架
 
