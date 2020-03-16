@@ -14,7 +14,8 @@ namespace SampleService.IdentityServer
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseIISIntegration()
+                //.UseIISIntegration()
+                .UseIIS()
                 .UseStartup<Startup>()
                 .Build();
 

@@ -41,14 +41,19 @@ namespace SampleService.Kestrel
             var url = hostingconfig[addressKey] ?? defaultAddress;
 
             return WebHost.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration(config =>
+                .ConfigureAppConfiguration((hostingContext, config) =>
                 {
-                    config.AddJsonFile("appsettings.json", false, true);
+                    config
+                        .SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
+                        .AddJsonFile("appsettings.json", true, true)
+                        .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
+                        .AddEnvironmentVariables();
                 })
                 .UseConfiguration(hostingconfig)
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseUrls(url)
+                .UseIIS()
                 .UseStartup<Startup>()
                 .Build();
         }

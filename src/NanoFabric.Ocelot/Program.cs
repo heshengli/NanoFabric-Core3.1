@@ -54,7 +54,8 @@ namespace NanoFabric.Ocelot
                      logging.AddConsole();
                      logging.AddDebug();
                  })
-                .UseIISIntegration()
+                //.UseIISIntegration()
+                .UseIIS()
                 .UseMetricsWebTracking()
                 .UseMetricsEndpoints()
                 .UseNLog()
