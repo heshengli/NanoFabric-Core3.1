@@ -73,14 +73,18 @@ namespace NanoFabric.AspNetCore
             {
                 var serviceConfiguration = p.GetRequiredService<IOptions<ConsulServiceDiscoveryOption>>().Value;
 
-                var client = new LookupClient(IPAddress.Parse("127.0.0.1"), 8600);
+                var iPEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8600);
                 if (serviceConfiguration.Consul.DnsEndpoint != null)
                 {
-                    client = new LookupClient(serviceConfiguration.Consul.DnsEndpoint.ToIPEndPoint());
+                    iPEndPoint = serviceConfiguration.Consul.DnsEndpoint.ToIPEndPoint();
                 }
-                client.EnableAuditTrail = false;
-                client.UseCache = true;
-                client.MinimumCacheTimeout = TimeSpan.FromSeconds(1);
+                var options = new LookupClientOptions(iPEndPoint)
+                {
+                    EnableAuditTrail = false,
+                    MinimumCacheTimeout = TimeSpan.FromSeconds(1),
+                    UseCache = true
+                };
+                var client = new LookupClient(options);
                 return client;
             });
             return services;
