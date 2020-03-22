@@ -30,14 +30,15 @@ namespace NanoFabric.IdentityServer
             // {
             //     options.RedisConnectionString = option.Redis;
             // });
-            //builder.AddOperationalStore(options =>
-            //{
-            //    options.RedisConnectionString = option.Redis;
-            //    options.KeyPrefix = "ids_prefix";
-            //});
+            builder.AddOperationalStore(options =>
+            {
+                options.RedisConnectionString = option.Redis;
+                options.KeyPrefix = "ids_prefix";
+            });
             builder.AddRedisCaching(options =>
             {
                 options.RedisConnectionString = option.Redis;
+                options.Db = 2;
             });
             //services
             builder.Services.AddTransient<IUserService, UserService>();

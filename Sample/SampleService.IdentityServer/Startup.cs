@@ -43,7 +43,10 @@ namespace SampleService.IdentityServer
             var cert = new X509Certificate2(Path.Combine(_environment.ContentRootPath, "nanofabrictest.pfx"), "idsrv3test");
 
             services.AddSingleton<IConfiguration>(Configuration);
-            services.AddMvc()
+            services.AddMvc(options =>
+            {
+                options.EnableEndpointRouting = false;
+            })
                 .AddNewtonsoftJson(options =>
                 {
                     options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
@@ -72,7 +75,7 @@ namespace SampleService.IdentityServer
                     corsBuilder.AllowAnyHeader();
                     corsBuilder.AllowAnyMethod();
                     corsBuilder.AllowAnyOrigin();
-                    //corsBuilder.AllowCredentials();
+                    corsBuilder.AllowCredentials();
                 });
             });
 
@@ -107,18 +110,18 @@ namespace SampleService.IdentityServer
 
             app.UseStaticFiles();
 
-            //app.UseMvc(routes =>
-            //{
-            //    routes.MapRoute(
-            //        name: "default",
-            //        template: "{controller=Home}/{action=Index}/{id?}");
-            //});
-            app.UseEndpoints(endpoints =>
+            app.UseMvc(routes =>
             {
-                endpoints.MapControllerRoute(
-                       name: "default",
-                       pattern: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute(
+            //           name: "default",
+            //           pattern: "{controller=Home}/{action=Index}/{id?}");
+            //});
 
         }
     }
