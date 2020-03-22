@@ -65,7 +65,7 @@ namespace SampleService.IdentityServer
             services.AddNanoFabricConsul(Configuration);
 
             services.AddIdentityServer()
-                .AddSigningCredential(cert)
+                .AddSigningCredential(cert).AddOperationalStore()
                 .AddNanoFabricIDS(Configuration);
 
             services.AddCors(options =>
