@@ -8,13 +8,7 @@ namespace NanoFabric.Swagger
     {
         internal static bool HasAuthorize(this OperationFilterContext context)
         {
-            var apiDescription = context.ApiDescription;
-
-            //return
-            //    apiDescription.ControllerAttributes().OfType<AuthorizeAttribute>().Any() ||
-            //    apiDescription.ActionAttributes().OfType<AuthorizeAttribute>().Any();
-            return
-                apiDescription.CustomAttributes().OfType<AuthorizeAttribute>().Any();
+            return context.ApiDescription.CustomAttributes().OfType<AuthorizeAttribute>().Any();
         }
     }
 }
