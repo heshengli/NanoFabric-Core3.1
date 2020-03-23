@@ -9,6 +9,6 @@
     <PackageReference Include="NodaTime" Version="2.4.7" />
     <PackageReference Include="Skoruba.IdentityServer4.Admin.BusinessLogic" Version="1.0.0-beta3" />
     <PackageReference Include="Skoruba.IdentityServer4.Admin.EntityFramework.Identity" Version="1.0.0-beta3" />
-    <PackageReference Include="StackExchange.Redis" Version="2.0.601" />
+    <PackageReference Include="StackExchange.Redis" Version="2.1.0" />
   </ItemGroup>
 </Project>

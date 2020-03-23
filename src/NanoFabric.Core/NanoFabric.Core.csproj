@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <UserSecretsId>786276d1-684e-4ca5-b21d-0c9bde991efc</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Logging\**" />

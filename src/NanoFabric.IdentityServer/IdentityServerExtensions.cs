@@ -38,6 +38,7 @@ namespace NanoFabric.IdentityServer
             builder.AddRedisCaching(options =>
             {
                 options.RedisConnectionString = option.Redis;
+                options.Db = 2;
             });
             //services
             builder.Services.AddTransient<IUserService, UserService>();
